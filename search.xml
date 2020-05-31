@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>使用echarts中图表显示的问题</title>
+      <link href="/2020/05/30/issue002/"/>
+      <url>/2020/05/30/issue002/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Q1：引入China-js后，地图被压缩显示的问题？"><a href="#Q1：引入China-js后，地图被压缩显示的问题？" class="headerlink" title="Q1：引入China.js后，地图被压缩显示的问题？"></a>Q1：引入China.js后，地图被压缩显示的问题？</h2><p>初始化图表如下所示，但是最小化网页后，又显示正常；<code>china.js</code>是正常运行的，但有延时。    <div      class="gallery-item"      style="background-image: url('/pics/issue002.png')"      data-title="issue"      data-url="/pics/issue002.png"    >      <div class="gallery-item__title">        issue      </div>    </div>  <br><strong>解决方法：</strong></p><ol><li>在<code>index.html</code>中查看js文件的导入顺序，发现<code>&lt;script src=&quot;js/china.js&quot;&gt;&lt;/script&gt;</code>是放在最后的；</li><li>将<code>&lt;script src=&quot;js/china.js&quot;&gt;&lt;/script&gt;</code>放在<code>&lt;script src=&quot;js/index.js&quot;&gt;&lt;/script&gt;</code>前面即可解决。(index.js是引入各个图表配置项的主要js文件)</li></ol><h2 id="Q2：刚开始引入geo图表时，无法显示图表且报错“The-image-argument-is-a-canvas-element-with-a-width-or-height-of-0”"><a href="#Q2：刚开始引入geo图表时，无法显示图表且报错“The-image-argument-is-a-canvas-element-with-a-width-or-height-of-0”" class="headerlink" title="Q2：刚开始引入geo图表时，无法显示图表且报错“The image argument is a canvas element with a width or height of 0”"></a>Q2：刚开始引入geo图表时，无法显示图表且报错“The image argument is a canvas element with a width or height of 0”</h2><p><strong>解决方法：</strong></p><ol><li>首先检查，div样式是否height固定，width:100%；</li><li>然后检查引入<code>class</code>名称是否一致；</li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 环境配置 </tag>
+            
+            <tag> echarts </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>主题Melody配置中遇到的问题</title>
+      <link href="/2020/05/27/issue001/"/>
+      <url>/2020/05/27/issue001/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Q1：配置melody出错，显示找不到css等文件？"><a href="#Q1：配置melody出错，显示找不到css等文件？" class="headerlink" title="Q1：配置melody出错，显示找不到css等文件？"></a>Q1：配置melody出错，显示找不到css等文件？</h2><p>官方配置链接：<a href="https://molunerfinn.com/hexo-theme-melody-doc/zh-Hans/quick-start.html#%E5%AE%89%E8%A3%85" target="_blank" rel="noopener">https://molunerfinn.com/hexo-theme-melody-doc/zh-Hans/quick-start.html#%E5%AE%89%E8%A3%85</a><br>按照官方文档中的指示，需要将<code>主题默认的配置文件_config.yml复制到hexo工作目录下的source/_data/molody.yml，如果source/_data的目录不存在那就创建一个</code> ；<br>然后我就按照原文，进行复制创建；但是输入命令 <code>hexo s</code> 后，显示报错；</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Unhandled rejection TypeError: C:\Users\zhao\blog\themes\melody\layout\includes\layout.pug:32</span><br><span class="line">    30|       each url in theme.stylesheets</span><br><span class="line">    31|         link(rel&#x3D;&#39;stylesheet&#39;, href&#x3D;url_for(url) + &#39;?version&#x3D;&#39; + version())</span><br><span class="line">  &gt; 32|     each item in theme.cdn.css</span><br><span class="line">    33|       if item !&#x3D;&#x3D; undefined</span><br><span class="line">    34|         link(rel&#x3D;&#39;stylesheet&#39;, href&#x3D;item + &#39;?version&#x3D;&#39; + version())</span><br><span class="line">    35|     include .&#x2F;head.pug</span><br><span class="line"></span><br><span class="line">Cannot read property &#39;css&#39; of undefined</span><br><span class="line">    at eval (eval at wrap (C:\Users\zhao\blog\node_modules\pug-runtime\wrap.js:6:10), &lt;anonymous&gt;:80:25)</span><br><span class="line">    at eval (eval at wrap (C:\Users\zhao\blog\node_modules\pug-runtime\wrap.js:6:10), &lt;anonymous&gt;:102:4)</span><br><span class="line">    at template (eval at wrap (C:\Users\zhao\blog\node_modules\pug-runtime\wrap.js:6:10), &lt;anonymous&gt;:2217:72)</span><br><span class="line">    at viewFn._compiled (C:\Users\zhao\blog\node_modules\hexo\lib\theme\view.js:136:48)</span><br><span class="line">    at viewFn.View.render (C:\Users\zhao\blog\node_modules\hexo\lib\theme\view.js:41:15)</span><br><span class="line">    at C:\Users\zhao\blog\node_modules\hexo\lib\hexo\index.js:61:21</span><br><span class="line">    at tryCatcher (C:\Users\zhao\blog\node_modules\bluebird\js\release\util.js:16:23)</span><br><span class="line">    at C:\Users\zhao\blog\node_modules\bluebird\js\release\method.js:15:34</span><br><span class="line">    at RouteStream._read (C:\Users\zhao\blog\node_modules\hexo\lib\hexo\router.js:126:3)</span><br><span class="line">    at RouteStream.Readable.read (_stream_readable.js:459:10)</span><br><span class="line">    at resume_ (_stream_readable.js:948:12)</span><br><span class="line">    at processTicksAndRejections (internal&#x2F;process&#x2F;task_queues.js:84:21)</span><br></pre></td></tr></table></figure><p><strong>解决方法</strong>：因为在 \blog\themes\melody中，已经存在<code>_config.yml</code>配置文件；不需要再进行复制配置；直接当做<code>melody.yml</code>使用即可。</p><h2 id="Q2：Hexo怎样引用本地图片？"><a href="#Q2：Hexo怎样引用本地图片？" class="headerlink" title="Q2：Hexo怎样引用本地图片？"></a>Q2：Hexo怎样引用本地图片？</h2><ol><li>如果是配置<code>_config.yml</code>文件，需要在当前目录source下创建/img文件夹，引用路径为<code>/img/图片名称</code></li><li>如果是<code>.md</code>文件，同样的在当前目录source下创建/img文件夹，按照markdown引用图片的格式：<code>![alt 属性文本](/img/图片名称)</code></li></ol><h2 id="Q3：一个-md中有多个标签"><a href="#Q3：一个-md中有多个标签" class="headerlink" title="Q3：一个.md中有多个标签?"></a>Q3：一个<code>.md</code>中有多个标签?</h2><p>使用<code>-</code>连接多个标签，但是<code>-</code>和文字之间一定要有<strong>空格</strong>。举例说明：</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tags: </span><br><span class="line"><span class="bullet">    - </span>环境配置</span><br><span class="line"><span class="bullet">    - </span>melody</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 环境配置 </tag>
+            
+            <tag> melody </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>组合查询用例设计</title>
+      <link href="/2020/05/26/TestCase-findMore/"/>
+      <url>/2020/05/26/TestCase-findMore/</url>
+      
+        <content type="html"><![CDATA[<h4 id="假设查询因子-A-B-C-D-E-下拉框-复选框"><a href="#假设查询因子-A-B-C-D-E-下拉框-复选框" class="headerlink" title="假设查询因子: A, B, C, D, E (下拉框+复选框)"></a>假设查询因子: A, B, C, D, E (下拉框+复选框)</h4><ol><li>单独查询:A;B;C;D;E<br>确保单独查询的正确性，这也是最基本的。</li><li>两个组合查询: AB; AC; AD; AE; BC; BD; BE; CD; CE; DE。<br>确保两个组合查询的正确性,这保证了两两之间不会相互影响。</li><li>三个组合查询: ABC; CDE<br>确保三个组合的正确性;因为我们已确保了单独及两个组合查询的正确性，所以不需要测试<br>三个组合的全部级组合。</li><li>五个组合查询: ABCDE<br>确保最大组合的正确性。</li></ol><p><strong>如果输入条件达到更多，可以考虑以下方法</strong></p><ol><li>单个条件遍历</li><li>默认条件查询</li><li>控件组合查询(两个组合、三个组合、五个组合)，组合查询存在技巧，可以查看这些查询.<br>条件对应的后台表单是不是同一个数据表，可以把不同的数据表中的字段进行组合查询，特别考虑跨表单查询</li><li>全条件组合查询</li><li>根据需求或者业务规则选取重点条件组合查询</li></ol><h4 id="假设输入条件中包含-输入框"><a href="#假设输入条件中包含-输入框" class="headerlink" title="假设输入条件中包含:输入框"></a>假设输入条件中包含:输入框</h4><ol><li>对于条件输入查询，先进行条件输入框的”输入验证”(可以放在单个条件查询验证里)</li><li>正常输入，查询结果检查;</li><li>异常输入，查询结果检查;如:空白字符、非法字符等</li></ol><h4 id="查询结果检查"><a href="#查询结果检查" class="headerlink" title="查询结果检查"></a>查询结果检查</h4><ol><li>当查询成功或者失败后，系统应给出必要的信息提示</li><li>所有查询结果，必须进行一定顺序的排列，可以按照ID或按照名称来排列</li><li>分页操作</li><li>UI检查等等</li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 用例设计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2020/05/26/hello-world/"/>
+      <url>/2020/05/26/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
